@@ -8,7 +8,7 @@ module Lynx
       end
 
       def perform(command)
-        system("cat #{@file} | #{command}")
+        system("cat #{@file} | #{command}") || exit(1)
       end
     end
   end

@@ -8,11 +8,11 @@ module Lynx
       end
 
       def perform(command)
-        system("#{command} > #{@file}")
+        system("#{command} > #{@file}") || exit(1)
       end
 
       def clear
-        system("rm -rf #{@file}")
+        system("rm -rf #{@file}") || exit(1)
 
         self
       end
