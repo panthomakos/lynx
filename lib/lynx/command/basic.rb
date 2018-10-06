@@ -10,7 +10,7 @@ module Lynx
         def instruct(method, &block)
           define_method(method) do |*args|
             @command << block.call(self,*args)
-
+            print("...")
             self
           end
         end
@@ -28,6 +28,7 @@ module Lynx
       end
 
       def authorize
+        @command << "--defaults-extra-file=#{config.credentials}" if config.credentials
         @command << "--user=#{config.username}" if config.username
         @command << "--password=#{config.password}" if config.password
         @command << "--host=#{config.host}" if config.host

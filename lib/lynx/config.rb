@@ -9,7 +9,7 @@ module Lynx
       @config = config
     end
 
-    [:username, :password, :host, :database, :socket].each do |method|
+    [:credentials, :username, :password, :host, :database, :socket].each do |method|
       define_method(method){ self[method] }
     end
 
@@ -28,7 +28,7 @@ module Lynx
     end
 
     def detect(commands)
-      commands.detect{ |c| system("which #{c}") }
+      commands.detect{ |c| system("which #{c} >/dev/null") || exit(1)}
     end
   end
 end
