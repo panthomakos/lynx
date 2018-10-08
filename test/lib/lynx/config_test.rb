@@ -5,6 +5,7 @@ describe Lynx::Config do
   def config
     @config ||= Lynx::Config.new(
       database: 'lynx',
+      credentials: '/foobar.cnf',
       username: 'name',
       password: 'pass',
       host: 'localhost',
@@ -29,6 +30,10 @@ describe Lynx::Config do
 
   it 'knows the database' do
     assert_equal 'lynx', config.database
+  end
+
+  it 'knows the credentials' do
+    assert_equal '/foobar.cnf', config.credentials
   end
 
   it 'knows the username' do
