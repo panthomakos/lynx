@@ -1,5 +1,3 @@
-require 'open3'
-
 module Lynx
   class Config
     MYSQL = ['mysql', 'mysql5', '/usr/local/bin/mysql', '/opt/local/bin/mysql5',
