@@ -1,3 +1,5 @@
+require 'open3'
+
 module Lynx
   class Config
     MYSQL = ['mysql', 'mysql5', '/usr/local/bin/mysql', '/opt/local/bin/mysql5',
@@ -14,11 +16,11 @@ module Lynx
     end
 
     def mysql
-      @mysql ||= self[:mysql] || detect(MYSQL)
+      @mysql ||= self[:mysql] || detect(MYSQL) || abort('[ERROR] Failed to detect a valid version of mysql')
     end
 
     def dump
-      @dump ||= self[:dump] || detect(DUMP)
+      @dump ||= self[:dump] || detect(DUMP) || abort('[ERROR] Failed to detect a valid version of mysqldump')
     end
 
     private
@@ -26,9 +28,8 @@ module Lynx
     def [](key)
       @config[key.to_sym] || @config[key.to_s]
     end
-
     def detect(commands)
-      commands.detect{ |c| system("which #{c} >/dev/null") || exit(1)}
+      commands.detect{ |c| system("which #{c} >/dev/null") }
     end
   end
 end

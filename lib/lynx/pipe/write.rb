@@ -1,4 +1,5 @@
 require 'lynx/pipe/basic'
+require 'open3'
 
 module Lynx
   module Pipe
@@ -8,12 +9,17 @@ module Lynx
       end
 
       def perform(command)
-        system("#{command} > #{@file}") || exit(1)
+        stdout, stderr, status = Open3.capture3("#{command} > #{@file}")
+        unless status.success?
+          abort("\n [ERROR] #{stderr} \n [ERROR] Failed to perform write: #{command} > #{@file}")
+        end
       end
 
       def clear
-        system("rm -rf #{@file}") || exit(1)
-
+        stdout, stderr, status = Open3.capture3("rm -rf #{@file}")
+        unless status.success?
+          abort("\n [ERROR] #{stderr} \n [ERROR] Failed to remove file: #{@file}")
+        end
         self
       end
     end
