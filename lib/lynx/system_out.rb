@@ -8,6 +8,7 @@ module Lynx
       unless status.success?
         raise(Lynx::Error, "\n [ERROR] #{stderr} \n [ERROR] Failed to perform: #{command}")
       end
+      stdout
     end
   end
 end

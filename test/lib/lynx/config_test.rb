@@ -7,7 +7,6 @@ describe Lynx::Config do
       database: 'lynx',
       credentials: '/foobar.cnf',
       username: 'name',
-      password: 'pass',
       host: 'localhost',
       socket: '/foo/bar')
   end
@@ -42,10 +41,6 @@ describe Lynx::Config do
 
   it 'knows the socket' do
     assert_equal '/foo/bar', config.socket
-  end
-
-  it 'knows the password' do
-    assert_equal 'pass', config.password
   end
 
   it 'knows the host' do

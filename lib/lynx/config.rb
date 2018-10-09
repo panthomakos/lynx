@@ -9,16 +9,16 @@ module Lynx
       @config = config
     end
 
-    [:credentials, :username, :password, :host, :database, :socket].each do |method|
+    [:credentials, :username, :host, :database, :socket].each do |method|
       define_method(method){ self[method] }
     end
 
     def mysql
-      @mysql ||= self[:mysql] || detect(MYSQL) || abort('[ERROR] Failed to detect a valid version of mysql')
+      @mysql ||= self[:mysql] || detect(MYSQL) || SystemOut.system_out_with_err('[ERROR] Failed to detect a valid version of mysql')
     end
 
     def dump
-      @dump ||= self[:dump] || detect(DUMP) || abort('[ERROR] Failed to detect a valid version of mysqldump')
+      @dump ||= self[:dump] || detect(DUMP) || SystemOut.system_out_with_err('[ERROR] Failed to detect a valid version of mysqldump')
     end
 
     private
