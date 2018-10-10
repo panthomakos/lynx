@@ -9,7 +9,7 @@ module Lynx
       end
 
       def perform(command)
-        SystemOut.system_out_with_err("cat #{@file} | #{command}")
+        SystemOut.run("cat #{@file} | #{command}")
       end
     end
   end

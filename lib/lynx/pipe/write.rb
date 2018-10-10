@@ -9,11 +9,11 @@ module Lynx
       end
 
       def perform(command)
-        SystemOut.system_out_with_err("#{command} > #{@file}")
+        SystemOut.run("#{command} > #{@file}")
       end
 
       def clear
-        SystemOut.system_out_with_err("rm -rf #{@file}")
+        SystemOut.run("rm -rf #{@file}")
         self
       end
     end
