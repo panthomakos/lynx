@@ -32,7 +32,7 @@ describe Lynx::SystemOut do
       err = assert_raises Lynx::Error do
         Lynx::SystemOut.run(@command)
       end
-      assert_match"\n [ERROR] #{@stderr} \n [ERROR] Failed to perform: #{@command}", err.message
+      assert_match"Failed to perform: #{@command} \n STDERR: #{@stderr}", err.message
     end
   end
 end

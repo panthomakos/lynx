@@ -6,7 +6,7 @@ module Lynx
     def self.run(command)
       stdout, stderr, status = Open3.capture3(command)
       unless status.success?
-        raise(Lynx::Error, "\n [ERROR] #{stderr} \n [ERROR] Failed to perform: #{command}")
+        raise(Lynx::Error, "Failed to perform: #{command} \n STDERR: #{stderr}")
       end
       stdout
     end
