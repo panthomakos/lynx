@@ -14,11 +14,11 @@ module Lynx
     end
 
     def mysql
-      @mysql ||= self[:mysql] || detect(MYSQL) || raise(Lynx::Error, '[ERROR] Failed to detect a valid version of mysql')
+      @mysql ||= self[:mysql] || detect(MYSQL) || raise(Lynx::Error, 'Failed to detect a valid version of mysql')
     end
 
     def dump
-      @dump ||= self[:dump] || detect(DUMP) || raise(Lynx::Error, '[ERROR] Failed to detect a valid version of mysqldump')
+      @dump ||= self[:dump] || detect(DUMP) || raise(Lynx::Error, 'Failed to detect a valid version of mysqldump')
     end
 
     private
