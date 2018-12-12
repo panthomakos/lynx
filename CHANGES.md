@@ -1,5 +1,10 @@
 # master (unreleased)
 
+# 1.1.0
+
+* Add `if [not] exists` support for creating/dropping DBs. (sshistrava)
+* Remove support for MySQL 5.5 commands. (sshistrava)
+
 # 1.0.0
 
 * Removed `--password` support. (sshistrava)
