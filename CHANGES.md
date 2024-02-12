@@ -1,5 +1,7 @@
 # master (unreleased)
 
+# 1.1.1
+
 * Fix `exists?` to `exist?` for Ruby 3.2+. (mkasberg)
 
 # 1.1.0
