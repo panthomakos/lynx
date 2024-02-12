@@ -17,7 +17,7 @@ module Lynx
       if defined?(Rails)
         env ||= Rails.env
         hash = Rails.configuration.database_configuration
-      elsif File.exists?('config/database.yml')
+      elsif File.exist?('config/database.yml')
         hash = YAML::load(ERB.new(IO.read('config/database.yml')).result)
       else
         raise RuntimeError, 'unable to find configuration file'
