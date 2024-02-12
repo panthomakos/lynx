@@ -1,5 +1,7 @@
 # master (unreleased)
 
+* Fix `exists?` to `exist?` for Ruby 3.2+. (mkasberg)
+
 # 1.1.0
 
 * Add `if [not] exists` support for creating/dropping DBs. (sshistrava)
